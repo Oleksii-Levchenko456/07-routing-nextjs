@@ -1,25 +1,16 @@
-// app/@modal/(.)notes/[id]/page.tsx
+'use client'
 
-import { getSingleNote } from '@/lib/api';
-import NewModal from '@/components/NewModal/NewModal';
-type Props = {
-    params: Promise<{ id: string }>;
-};
+import type { Note } from '@/types/note'
+import NewModal from '@/components/NewModal/NewModal'
+interface Props {
+    note: Note
+}
 
-const NotePreview = async ({ params }: Props) => {
-    const { id } = await params;
-    const note = await getSingleNote(id);
-
+export default function NotePreview({ note }: Props) {
     return (
-        <>
-            <NewModal><h2>{note.title}</h2>
-                <p>{note.content}</p>
-            </NewModal>
-
-
-
-        </>
-    );
-};
-
-export default NotePreview;
+        <NewModal>
+            <h2>{note.title}</h2>
+            <p>{note.content}</p>
+        </NewModal>
+    )
+}

@@ -8,7 +8,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useState, useEffect } from 'react'
 import SearchBox from '@/components/SearchBox/SearchBox'
 import Pagination from '@/components/Pagination/Pagination'
-import NewModal from '@/components/NewModal/NewModal'
+import Modal from '@/components/OldModal/Modal'
 import { useDebouncedCallback } from 'use-debounce'
 import Loader from '@/components/Loader/Loader'
 import NoteForm from '@/components/NoteForm/NoteForm'
@@ -61,9 +61,9 @@ export default function NotesClient({ initialData, tag }: Props) {
             {isFetching && <Loader />}
 
             {isOpenModal && (
-                <NewModal >
+                <Modal onClose={closeModal}>
                     <NoteForm onClose={closeModal} />
-                </NewModal>)
+                </Modal>)
             }
 
             {data && data.notes.length > 0 ? (

@@ -12,8 +12,7 @@ const NotePreview = async ({ params }: Props) => {
 
     return (
         <>
-            <NewModal>
-                <h2>{note.title}</h2>
+            <NewModal><h2>{note.title}</h2>
                 <p>{note.content}</p>
             </NewModal>
 

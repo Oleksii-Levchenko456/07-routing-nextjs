@@ -1,4 +1,4 @@
-// import css from './SidebarNotes.module.css'
+import css from './SidebarNotes.module.css'
 
 export default function SidebarNotes() {
 
@@ -6,11 +6,13 @@ export default function SidebarNotes() {
 
     return (
         <aside >
-            <ul >
+            <ul className={css.menuList}
+            >
 
                 {tags.map(tag => (
-                    <li key={tag} >
-                        <a href={`/notes/filter/${tag}`} >
+                    <li key={tag} className={css.menuItem}
+                    >
+                        <a href={`/notes/filter/${tag}`} className={css.menuLink}>
                             {tag}
                         </a>
                     </li>
@@ -19,6 +21,3 @@ export default function SidebarNotes() {
         </aside>
     )
 }
-// className = { css.menuList }
-// className = { css.menuItem }
-// className = { css.menuLink }

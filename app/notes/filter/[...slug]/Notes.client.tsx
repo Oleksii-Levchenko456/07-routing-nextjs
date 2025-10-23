@@ -4,7 +4,7 @@
 import css from './NotesPage.module.css'
 import NoteList from '@/components/NoteList/NoteList'
 import { fetchNotes } from '@/lib/api'
-import { useQuery, keepPreviousData } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { useState, useEffect } from 'react'
 import SearchBox from '@/components/SearchBox/SearchBox'
 import Pagination from '@/components/Pagination/Pagination'
@@ -53,7 +53,9 @@ export default function NotesClient({ initialData, tag }: Props) {
 
                 <SearchBox value={inputValue} onChange={handleInputValue} />
                 {data && data.totalPages > 1 && <Pagination totalPages={data.totalPages} page={page} setPage={setPage} />}
+
                 <button className={css.button} onClick={() => { setIsOpenModal(true) }}>Create note +</button>
+
             </header>
 
             {isFetching && <Loader />}
@@ -62,6 +64,7 @@ export default function NotesClient({ initialData, tag }: Props) {
                 <Modal onClose={closeModal}>
                     <NoteForm onClose={closeModal} />
                 </Modal>)}
+
             {data?.notes?.length &&
                 <NoteList notes={data.notes} />}
             {!NoteList && <p>Empty...</p>}
@@ -70,4 +73,3 @@ export default function NotesClient({ initialData, tag }: Props) {
 
     )
 }
-// неправильно типізував пропс

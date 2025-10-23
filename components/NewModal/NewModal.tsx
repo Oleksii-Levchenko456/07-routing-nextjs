@@ -1,7 +1,6 @@
-// components/Modal/Modal.tsx
-
 'use client';
 
+import css from './NewModal.module.css'
 import { useRouter } from 'next/navigation';
 
 type Props = {
@@ -14,10 +13,10 @@ const NewModal = ({ children }: Props) => {
     const close = () => router.back();
 
     return (
-        <div>
-            <div>
+        <div className={css.modalOverlay}>
+            <div className={css.modalContent}>
                 {children}
-                <button onClick={close}>Close</button>
+                <button className={css.closeButton} onClick={close}>Close</button>
             </div>
         </div>
     );

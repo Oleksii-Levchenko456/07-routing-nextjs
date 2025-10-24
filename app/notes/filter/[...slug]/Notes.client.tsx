@@ -12,14 +12,14 @@ import Modal from '@/components/OldModal/Modal'
 import { useDebouncedCallback } from 'use-debounce'
 import Loader from '@/components/Loader/Loader'
 import NoteForm from '@/components/NoteForm/NoteForm'
-import type { FetchNotesResponse } from '@/lib/api'
+import { keepPreviousData } from '@tanstack/react-query'
+// import type { FetchNotesResponse } from '@/lib/api'
 
 interface Props {
-    initialData: FetchNotesResponse,
     tag?: string
 }
 
-export default function NotesClient({ initialData, tag }: Props) {
+export default function NotesClient({ tag }: Props) {
     const [page, setPage] = useState(1)
     const [isOpenModal, setIsOpenModal] = useState(false)
     const [searchValue, setSearchValue] = useState('')
@@ -44,7 +44,8 @@ export default function NotesClient({ initialData, tag }: Props) {
         queryKey: ['notes', page, searchValue, tag],
         queryFn: () => fetchNotes(page, 12, searchValue, tag),
         refetchOnMount: false,
-        placeholderData: initialData,
+        placeholderData: keepPreviousData
+
 
     })
     return (

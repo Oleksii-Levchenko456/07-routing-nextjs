@@ -39,8 +39,8 @@ interface requestBodyProps {
     "tag": string
 }
 
-export const createNote = async (requestBody: requestBodyProps) => {
-    const res = await axios.post('https://notehub-public.goit.study/api/notes',
+export const createNote = async (requestBody: requestBodyProps): Promise<Note> => {
+    const res = await axios.post<Note>('https://notehub-public.goit.study/api/notes',
         requestBody,
         {
             headers: {
@@ -51,8 +51,8 @@ export const createNote = async (requestBody: requestBodyProps) => {
     return res.data
 }
 
-export const deleteNote = async (id: string) => {
-    const res = await axios.delete(`https://notehub-public.goit.study/api/notes/${id}`, {
+export const deleteNote = async (id: string): Promise<Note> => {
+    const res = await axios.delete<Note>(`https://notehub-public.goit.study/api/notes/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`
         }

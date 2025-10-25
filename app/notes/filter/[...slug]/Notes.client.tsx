@@ -13,7 +13,6 @@ import { useDebouncedCallback } from 'use-debounce'
 import Loader from '@/components/Loader/Loader'
 import NoteForm from '@/components/NoteForm/NoteForm'
 import { keepPreviousData } from '@tanstack/react-query'
-// import type { FetchNotesResponse } from '@/lib/api'
 
 interface Props {
     tag?: string
